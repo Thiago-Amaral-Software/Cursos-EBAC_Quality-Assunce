@@ -1,0 +1,127 @@
+
+            #language: pt
+
+            Funcionalidade: Configuração de Produto
+
+            Como cliente da EBAC-SHOP
+            Quero configurar meu produto de acordo com meu tamanho e gosto
+            e escolher a quantidade
+            Para depois inserir no carrinho
+
+            Contexto: Dado a confirmação de produto na Plataforma EBAC-SHOP
+
+            Cenário: Seleções de cor, tamanho e quantidade devem ser obrigatórios
+            Quando eu selecionar <cor>
+            E selecionar <tamanho>
+            E selecionar <quantidade>
+            Então deve colocar o produto no carrinho
+
+            Exemplos:
+            | cor      | tamanho | quantidade |
+            | "Blue"   | "XS"    | "1"        |
+            | "Orange" | "S"     | "2"        |
+            | "Red"    | "M"     | "3"        |
+            | "Blue"   | "L"     | "4"        |
+            | "Red"    | "XL"    | "5"        |
+
+
+
+
+            Cenário: Deve permitir apenas 10 produtos por venda
+            Quando eu selecinar 10 produtos ou menos
+            Então devo ter os os produtos selecionados no carrinho
+
+
+            Esquema do Cenário: Quantidade válida
+            Quando eu selecionar deve colocar o produto no carrinho <quantidade válida>
+            Então deve aparecer uma mensagem "Produto inserido com sucesso"
+
+
+            | Quantidade válida |
+            | "1"               |
+            | "2"               |
+            | "3"               |
+            | "4"               |
+            | "5"               |
+            | "6"               |
+            | "7"               |
+            | "8"               |
+            | "9"               |
+            | "10"              |
+
+
+            Esquema do Cenário: Quantidade inválida
+            Quando eu selecionar deve colocar o produto no carrinho <quantidade inválida>
+            Então deve aparecer uma mensagem de alerta "Quantidade inválida"
+
+
+            | Quantidade inválida |
+            | "11"                |
+            | "12"                |
+            | "13"                |
+            | "14"                |
+            | "15"                |
+            | "16"                |
+            | "17"                |
+            | "18"                |
+            | "19"                |
+            | "20"                |
+
+
+
+
+            Cenário: Limpar ítens do carrinho
+            Quando eu clicar no botão "limpar"
+            Então deve voltar ao estado original
+
+
+            Funcionalidade: Login de autenticação
+            Como cliente da plataforma EBAC-SHOP
+            Quero fazer login na plataforma
+            Para visualizar meus pedidos
+
+            Contexto:Dado quando eu acessa a página de login da Plataforma EBAC-SHOP
+
+            Cenário: Acesso válido
+            Quando eu digitar  no campo login "thiago@ebac.com.br"
+            E senha "123456"
+            Então deve ser encaminhado para a página de Checkout
+
+            Cenário: Acesso inválido
+            Quando eu digitar no campo login "fernado@ebac.com.br"
+            E senha "56789"
+            Então deve aparecer uma mensagem de alerta "Usuário e senha não cadastrado"
+
+
+            Esquema do Cenário: Usuário  e senha não cadastrados
+            Quando eu digitar no campo de login <Usuário não cadastrado>
+            E digitar no campo da senha <senha não cadastrada>
+            Então deve aparecer uma mensagem de alerta "Usuário e senha não cadastrado"
+
+            Exemplos:
+
+            | Usuário não cadastrado   | senha não cadastrada |
+            | "fernando@ebac.com.br"   | "234234235"          |
+            | "Camila@ebac.com.br"     | "6778899"            |
+            | "Roberto@ebac.com.br"    | "998776678"          |
+            | "Wellington@ebac.com.br" | "6789007654"         |
+
+
+Funcionalidade: Tela de cadastro - Checkout
+Como cliente da plataforma EBAC-SHOP
+Quero fazer concluir o meu cadastro
+Para finalizar minhas compras
+
+Contexto: Dado a conclusão de finalização de compra da plataforma EBAC-SHOP
+
+Cenário: Cadastro obrigatório
+Quando for inserir os dados de cadastro obrigatório
+Então então devo preencher todos os campos em asterístico
+
+Cenário: Formato de e-mail invalido
+Quando for cadastrado os dados <usuário não cadastrado> 
+E cadastrar em campos "vazio" 
+Então deve emitir uma mensagem de alerta "Erro ao cadastrar"
+
+
+
